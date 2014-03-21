@@ -1,8 +1,15 @@
 language: python
 python:
   - '2.7'
-  # - '3.3' //todo: need plenty of improvements https://travis-ci.org/qubell/contrib-python-qubell-client/jobs/21157898
+  #- '3.3' //todo: need plenty of improvements https://travis-ci.org/qubell/contrib-python-qubell-client/jobs/21157898
+matrix:
+    include:
+      - - node: staging
+        - secure: "B2N6j+tqFL6cNGmj9UzhOuIB87xlTat3RYktq4Y/JregB2LdoXWz/3HjpeDphyF4YynDeT0yLfkOXQD4lrlIxpnwnS3/7IfnzGNMR8FUtvWOJUz97SzisgbXV8UQ+cez29xXQKXJXrAwk2TDdeaWwIovVENlHwqKNjqPBWyj4qM="
+        - secure: "jGgTyW/ve6xlYoSMHHoUPkp6RSrQS/kiABFKF65ojG70AmJGrC2fUckbFj8fChID+16fw8FfN9+LhBHlvqpS8ZySKA7/QYXjhPhexIhbpC596IJ3RRti+DebmzYbT1HdMLOi/KUxuFWLoER1Rs8V6Rk8f4YFaE8CoLYDWzEVI+4="
+
+      - - node: prod
+        - secure: "LAiiZ4DE4+tV0AbUd9cBKAHAk2VYfX10b4vwFYQbHPqqCcYLR9gDHJgwA1clX8xDJek2cCaeSSyXPoBYZIcgF2pwrOcb3/9OJadPn+FG7cbu9WoogGLElj5sHVfBLnFXrwbCl6EkIEj6zqz4PTO+Iao5rF2nEzjrQLcnHEsS4T8="
+        - secure: "au3Lf0legucM5rfJ2+nQmEIun2Dk3pJZFh/5FxSzXboNKO+PNxhabyGTuMhV4jr94Y/6LcAmWT+zVnhwPSvEJXBGYJCuFTO+s39l9xIFa4V2JYrQnGol43zyg6a/R5mJ5WjhO5az2NruuZ3ULOyFjnBdqoPGRZy6MAmHYlqfx6U="
 install: pip install -r requirements.txt
-script:
-  - nosetests qubell/tests
-  - echo "live, client tests are coming..."
+script: ./build.sh
